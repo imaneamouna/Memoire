@@ -17,7 +17,5 @@ route::get('/admin',function(){
 })->name('adminn');
 Route::get('/index', [App\Http\Controllers\Dashboard\IndexController::class,'index'])->name('index');
 Route::put('settings/{setting}/update',[App\Http\Controllers\Dashboard\SettingController::class , 'update'])->name('dashboard.settings.update');
-// Route::put('/settings/{setting}/update', [App\Http\Controllers\Dashboard\SettingController::class , 'update'])->name('dashboard.settings.update');
-// Route::get('settings',[SettingController::class , 'index'])->name('dashboard.settings.index');
+Route::get('settings',[App\Http\Controllers\Dashboard\SettingController::class , 'index'])->name('dashboard.settings.index');// Route::get('settings',[SettingController::class , 'index'])->name('dashboard.settings.index');
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

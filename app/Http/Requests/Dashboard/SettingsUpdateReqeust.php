@@ -24,7 +24,7 @@ class SettingsUpdateReqeust extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'string|nullable',
+            'title'=>'string|nullable',
             'description'=>'string|nullable',
             'email'=>'email|nullable',
             'phone'=>'string|nullable',

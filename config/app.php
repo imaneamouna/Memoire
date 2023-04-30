@@ -84,7 +84,10 @@ return [
 
     'locale' => 'en',
 
-    /*
+    /*'local' => [
+            'driver' => 'local',
+            'root' => public_path(),
+        ],
     |--------------------------------------------------------------------------
     | Application Fallback Locale
     |--------------------------------------------------------------------------
@@ -108,7 +111,11 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => [
+        'en_US',
+        'driver' => 'local',
+        'root' => public_path(),
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -181,6 +188,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -209,6 +217,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Image' => Intervention\Image\Facades\Image::class
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

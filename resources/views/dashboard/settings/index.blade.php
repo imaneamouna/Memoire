@@ -61,13 +61,13 @@
                                 <div class="form-group">
                                     <label for="validationCustom01" class="col-form-label pt-0"><span>*</span>
                                         اسم الموقع</label>
-                                    <input class="form-control" id="validationCustom01" type="text" name="name" value="{{$setting->name}}">
+                                    <input class="form-control" id="validationCustom01" type="text" name="title" value="{{$setting->title}}">
                                 </div>
 
 
                                 <div class="form-group">
                                     <label class="col-form-label">وصف الموقع</label>
-                                    <textarea rows="5" cols="12" name="description">{{$setting->twitter}}</textarea>
+                                    <textarea rows="5" cols="12" name="description">{{$setting->description}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="validationCustom02" class="col-form-label"><span>*</span>
