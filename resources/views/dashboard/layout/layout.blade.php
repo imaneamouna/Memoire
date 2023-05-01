@@ -42,6 +42,9 @@
 
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard') }}/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard') }}/assets/dropify.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
 </head>
 
 <body class="rtl">
@@ -132,7 +135,8 @@
                                         <div class="media-body">
                                             <h6 class="mt-0 txt-success">
                                                 <span>
-                                                    <i class="download-color font-success" data-feather="download"></i>
+                                                    <i class="download-color font-success"
+                                                        data-feather="download"></i>
                                                 </span>Download Complete
                                             </h6>
                                             <p class="mb-0">Lorem ipsum dolor sit amet, consectetuer.</p>
@@ -144,7 +148,8 @@
                                         <div class="media-body">
                                             <h6 class="mt-0 txt-danger">
                                                 <span>
-                                                    <i class="alert-color font-danger" data-feather="alert-circle"></i>
+                                                    <i class="alert-color font-danger"
+                                                        data-feather="alert-circle"></i>
                                                 </span>250 MB trash files
                                             </h6>
                                             <p class="mb-0">Lorem ipsum dolor sit amet, consectetuer.</p>
@@ -212,7 +217,7 @@
             @include('dashboard.layout.sidebar')
 
             <div class="page-body">
-              @yield('body')
+                @yield('body')
             </div>
 
             <!-- footer start-->
@@ -290,6 +295,13 @@
 
     <!--script admin-->
     <script src="{{ asset('dashboard') }}/assets/js/admin-script.js"></script>
+    <script src="{{ asset('dashboard') }}/assets/dropify.js"></script>
+    <script>
+        $('.dropify').dropify();
+    </script>
+      <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    @stack('javascripts')
 </body>
 
 </html>

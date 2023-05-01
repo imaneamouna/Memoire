@@ -38,11 +38,11 @@ class SettingController extends Controller
            $setting->update(['logo' => $logo]);
         }
 
-        dd($logo);
+       // dd($logo);
 
         if ($request->has('favicon')) {
             $favicon = ImageUpload::uploadImage($request->favicon,32,32,'images/');// in images folder inside public
-            $setting->update(['logo' => $favicon]);
+            $setting->update(['favicon' => $favicon]);
          }
         // $imagename = date('Y-m-d') . '.' . $request->logo->extension();
        // return redirect()->route('dashboard.settings.index')->with('success', 'تم تحديث الاعدادات بنجاح');
