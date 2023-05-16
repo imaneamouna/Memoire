@@ -12,8 +12,10 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{ asset('dashboard') }}/assets/images/dashboard/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('dashboard') }}/assets/images/dashboard/favicon.png" type="image/x-icon">
-    <title>Multikart - Premium Admin Template</title>
-
+    <title>
+       {{ auth()->user()->name}}
+    </title>
+    {{-- Multikart - Premium Admin Template --}}
     <!-- Google font-->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,600;1,700;1,800;1,900&display=swap">
@@ -44,6 +46,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard') }}/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard') }}/assets/dropify.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> {{-- java script library --}}
+
 
 </head>
 
@@ -77,7 +81,7 @@
                         <li>
                             <form class="form-inline search-form">
                                 <div class="form-group">
-                                    <input class="form-control-plaintext" type="search" placeholder="Search..">
+                                    <input class="form-control-plaintext" type="search" placeholder="search..">
                                     <span class="d-sm-none mobile-search">
                                         <i data-feather="search"></i>
                                     </span>
@@ -89,11 +93,11 @@
                                 <i data-feather="maximize-2"></i>
                             </a>
                         </li>
-                        <li class="onhover-dropdown">
+                         <li class="onhover-dropdown">
                             <a class="txt-dark" href="javascript:void(0)">
-                                <h6>EN</h6>
+                                 <h6>{{ auth()->user()->email}}</h6>
                             </a>
-                            <ul class="language-dropdown onhover-show-div p-20">
+                            {{-- <ul class="language-dropdown onhover-show-div p-20">
                                 <li>
                                     <a href="javascript:void(0)" data-lng="en">
                                         <i class="flag-icon flag-icon-is"></i>English</a>
@@ -110,14 +114,17 @@
                                     <a href="javascript:void(0)" data-lng="fr">
                                         <i class="flag-icon flag-icon-nz"></i>French</a>
                                 </li>
-                            </ul>
-                        </li>
+                            </ul> --}}
+                         </li>
+
+
+
                         <li class="onhover-dropdown">
                             <i data-feather="bell"></i>
                             <span class="badge badge-pill badge-primary pull-right notification-badge">3</span>
                             <span class="dot"></span>
                             <ul class="notification-dropdown onhover-show-div p-0">
-                                <li>Notification <span class="badge badge-pill badge-primary pull-right">3</span></li>
+                                <li> <span class="badge badge-pill badge-primary pull-right">3</span></li>
                                 <li>
                                     <div class="media">
                                         <div class="media-body">
@@ -167,8 +174,9 @@
                         </li>
                         <li class="onhover-dropdown">
                             <div class="media align-items-center">
-                                <img class="align-self-center pull-right img-50 blur-up lazyloaded"
-                                    src="assets/images/dashboard/user3.jpg" alt="header-user">
+                                {{-- <img class="align-self-center pull-right img-50 blur-up lazyloaded"
+                                    src="{{auth()->user()->emai}}" alt="header-user"> --}}
+
                                 <div class="dotted-animation">
                                     <span class="animate-circle"></span>
                                     <span class="main-circle"></span>
@@ -301,6 +309,7 @@
     </script>
       <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
       <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @stack('javascripts')
 </body>
 

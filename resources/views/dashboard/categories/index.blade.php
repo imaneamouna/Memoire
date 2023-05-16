@@ -47,14 +47,14 @@
 
                         <div class="card-body">
                             @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="table-responsive table-desi">
                                 <table class="table all-package table-category " id="editableTable">
                                     <thead>
@@ -86,9 +86,9 @@
             aria-hidden="true">
             <div class="modal-dialog" role="document">
 
-                    <div class="modal-content">
-                        <form action="{{ route('dashboard.categories.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
+                <div class="modal-content">
+                    <form action="{{ route('dashboard.categories.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="modal-header">
                             <h5 class="modal-title f-w-600" id="exampleModalLabel">اضافة قسم جديد </h5>
                             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"><span
@@ -108,7 +108,7 @@
                                 <div class="form-group">
                                     <label for="validationCustom01" class="mb-1">القسم الرئيسي </label>
                                     <select name="parent_id" id="" class="form-control">
-                                        <option value="">قسم رئيسي</option>
+                                        <option value="">القسم </option>
                                         @foreach ($mainCategories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
@@ -130,7 +130,7 @@
                         </div>
                     </form>
 
-                    </div>
+                </div>
 
             </div>
         </div>
@@ -211,4 +211,4 @@
             $('#deletemodal #id').val(id);
         })
     </script>
-@endpush 
+@endpush

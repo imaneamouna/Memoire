@@ -5,51 +5,61 @@ namespace App\services;
 use App\Models\category;
 use App\Utils\ImageUpload;
 use Yajra\DataTables\Facades\DataTables;
+use App\repositories\CategoryRepository;
 
 class CategoryService
 {
 
+    private $categoryRepository;
+
+    public function __construct(CategoryRepository $repo)
+    {
+        $this->categoryRepository = $repo;
+    }
+
     public function getMainCategories()
     {
-        return Category::where('parent_id', 0)->orWhere('parent_id', null)->get();
+        return $this->categoryRepository->getMainCategories();
     }
+
 
 
     public function store($params)
     {
+        //$params['image'] = $params['parent_id'] ?? 0;
+        if (isset($params['image'])) {
+            $params['image'] = ImageUpload::uploadImage($params['image']);
+        }
+        return $this->categoryRepository->store($params);
+    }
+
+    public function getById($id)
+    {
+        return $this->categoryRepository->getById($id);
+    }
+
+
+    public function update($id, $params)
+    {
+        $category = $this->categoryRepository->getById($id);
         $params['parent_id'] = $params['parent_id'] ?? 0;
         if (isset($params['image'])) {
             $params['image'] = ImageUpload::uploadImage($params['image']);
         }
 
-        return  Category::create($params);
-    }
-
-    public function getById($id, $childrenCount = false)
-    {
-        $query =  Category::where('id', $id);
-        if ($childrenCount) { //if not null
-            $query->withCount('child');
-        }
-        return $query->firstOrFail();
-        //return Category::where('id', $id)->withCount('child')->firstOrFail();
+        return  $this->categoryRepository->update($category, $params);
     }
 
 
-    public function update($id,$params)
+    public function delete($params)
     {
-        $category = $this->getById($id);
-        $params['parent_id'] = $params['parent_id'] ?? 0;
-        if (isset($params['image'])) {
-            $params['image'] = ImageUpload::uploadImage($params['image']);
-        }
-
-        return  $category->update($params);
+        
+        $this->categoryRepository->delete($params);
     }
 
     public function datatable()
     {
-        $query = Category::select('*')->with('parent');
+        $query = $this->categoryRepository->baseQuery(['product']);
         return  DataTables::of($query)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
@@ -60,11 +70,7 @@ class CategoryService
             })
 
             ->addColumn('parent', function ($row) {
-                if ($row->parent) {
-                    return $row->parent->name;
-                }
-                return 'قسم رئيسي';
-
+                return $row->name;
                 // return ($row->parent ==  0) ? 'قسم رئيسي' :   $row->parents->name;
             })
 
@@ -74,5 +80,13 @@ class CategoryService
 
             ->rawColumns(['parent', 'action', 'image'])
             ->make(true);
+    }
+
+
+    public function getAll()
+    {
+       // return 1;
+        //return $this->categoryRepository->baseQuery(['child'])->get();
+        return $this->categoryRepository->getMainCategories();
     }
 }

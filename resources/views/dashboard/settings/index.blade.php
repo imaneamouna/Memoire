@@ -38,9 +38,10 @@
                         </div>
                         <div class="card-body">
                             <div class="digital-add needs-validation">
-                                <form action="{{ route('dashboard.settings.update', $setting->id) }}" method="post" enctype="multipart/form-data">
+                                <form action="{{route('dashboard.settings.update', $setting->id) }}" method="post" enctype="multipart/form-data">
+                                    {{-- {{ --}}
                                     @csrf
-                                    @method('put')
+                                    {{-- @method('put') --}}
 
                                     @if($errors->any())
                                     {!! implode('', $errors->all('<div>:message</div>')) !!}

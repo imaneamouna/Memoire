@@ -15,13 +15,6 @@ class SettingController extends Controller
 {
 
 
-
-
-
-
-
-
-
     public function index(setting $setting)
     {
         return view('dashboard.settings.index');
@@ -45,7 +38,7 @@ class SettingController extends Controller
             $setting->update(['favicon' => $favicon]);
          }
         // $imagename = date('Y-m-d') . '.' . $request->logo->extension();
-       // return redirect()->route('dashboard.settings.index')->with('success', 'تم تحديث الاعدادات بنجاح');
+        return redirect()->route('dashboard.settings.index')->with('success', 'تم تحديث الاعدادات بنجاح');
     }
 }
 

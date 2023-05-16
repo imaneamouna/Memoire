@@ -18,8 +18,8 @@ class CategoryUpdateRequest extends FormRequest
 
         return [
             'name' => 'string',
-            'parent_id' => 'exists:categories,id',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'parent_id' => 'nullable|exists:categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

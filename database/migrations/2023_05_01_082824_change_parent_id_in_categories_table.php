@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->integer('parent_id')->nullable(false)->default(0)->change();
-        });
+        // Schema::table('categories', function (Blueprint $table) {
+        //     $table->integer('parent_id')->nullable(false)->default(0)->change();
+        // });
     }
 
     /**
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->change('parent_id')->nullable(true)->default(null);
-        });
+        // Schema::table('categories', function (Blueprint $table) {
+        //     $table->change('parent_id')->nullable(true)->default(null);
+        // });
     }
 };

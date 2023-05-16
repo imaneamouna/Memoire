@@ -25,7 +25,7 @@ class CategoryStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:categories,name',
-            'parent_id' => 'nullable|exists:categories,id',
+           // 'parent_id' => 'nullable|exists:categories,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

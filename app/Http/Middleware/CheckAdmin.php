@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,12 +18,12 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        //    dd('admin');
-        //  dd(auth()->user()->type);
-        if (auth()->user()->type == 'admin') {
+        //    // dd('admin');
+        // dd(auth()->user());
+        if (auth()->user()?->type == 'admin') {
             return $next($request);
         }
-        Auth::logout();
-        return redirect()->route('index');
+        //Auth::logout();
+        return redirect()->route('dashboard');
     }
 }

@@ -13,12 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 // Route::get('/', function () {
 //     return view('dashboard.settings.index');
 // })->name('index');
+// Route::get('/order/{id}', [App\Http\Controllers\Site\OrderController::class, 'index'])->name('order');
 
-Auth::routes([
-    //  'register' =>false,
-]);
+Auth::routes();
+Route::group(['middleware' => 'auth'], function () {
+    //  Route::get('home', [App\Http\Controllers\Site\HomeController::class, 'index'])->name('site.home');
+    Route::get('/products', [App\Http\Controllers\Site\HomeController::class, 'index'])->name('our_products');
+    Route::get('/', [App\Http\Controllers\Site\HomeController::class, 'home'])->name('home');
+    // Route::get('/order/{id}', [App\Http\Controllers\Site\HomeController::class, 'show'])->name('show.details');
+    Route::get('/order/{id}', [App\Http\Controllers\Site\HomeController::class, 'show'])->name('order');
+    Route::get('/contactus', [App\Http\Controllers\Site\HomeController::class, 'contact'])->name('contactus');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    /************categories********************************* */
+});

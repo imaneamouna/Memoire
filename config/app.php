@@ -190,6 +190,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        //  Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -203,6 +204,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Darryldecode\Cart\CartServiceProvider::class
+
 
     ],
 
@@ -219,7 +222,12 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Image' => Intervention\Image\Facades\Image::class,
+        'Auth' => Illuminate\Support\Facades\Auth::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
+
+        //'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        //'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

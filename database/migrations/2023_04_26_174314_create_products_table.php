@@ -16,14 +16,16 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->longText('description');
-            $table->string('image');
-            $table->decimal('main_price',8,2);
-            $table->decimal('discount_id')->nullable();//ta5fidat
+            $table->longText('description')->nullable();
+            $table->string('image')->nullable();
+            $table->decimal('main_price', 8, 2);
+            $table->decimal('discount_id')->nullable(); //ta5fidat
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->decimal('main_discount',8,2);
-
+            $table->decimal('main_discount', 8, 2);
+            $table->text('color')->nullable();
+            $table->text('size')->nullable();
+            $table->text('quantity')->nullable()->default(0);
 
             $table->timestamps();
             $table->softDeletes();
